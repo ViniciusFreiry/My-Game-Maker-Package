@@ -24,6 +24,11 @@ move = function() {
 	if(_abs_hspd >= 1) {
 		repeat(_abs_hspd) {
 			if(place_meeting(x + _hspd, y, obj_ground_top_down)) {
+				if(!place_meeting(x + _hspd, y - 1, obj_ground_top_down)) y--;
+				else if(!place_meeting(x + _hspd, y + 1, obj_ground_top_down)) y++;
+			}
+			
+			if(place_meeting(x + _hspd, y, obj_ground_top_down)) {
 				if(place_meeting(ceil(x), y, obj_ground_top_down)) x = floor(x);
 				else x = ceil(x);
 			
@@ -47,6 +52,11 @@ move = function() {
 	
 	if(_abs_vspd >= 1) {
 		repeat(_abs_vspd) {
+			if(place_meeting(x, y + _vspd, obj_ground_top_down)) {
+				if(!place_meeting(x - 1, y + _vspd, obj_ground_top_down)) x--;
+				else if(!place_meeting(x + 1, y + _vspd, obj_ground_top_down)) x++;
+			}
+			
 			if(place_meeting(x, y + _vspd, obj_ground_top_down)) {
 				if(place_meeting(x, ceil(y), obj_ground_top_down)) y = floor(y);
 				else y = ceil(y);

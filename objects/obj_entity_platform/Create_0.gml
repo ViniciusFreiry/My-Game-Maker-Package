@@ -61,6 +61,11 @@ move = function() {
 	if(_abs_vspd >= 1) {
 		repeat(_abs_vspd) {
 			if(place_meeting(x, y + _vspd, obj_ground_platform)) {
+				if(!place_meeting(x - 1, y + _vspd, obj_ground_platform)) x--;
+				else if(!place_meeting(x + 1, y + _vspd, obj_ground_platform)) x++;
+			}
+			
+			if(place_meeting(x, y + _vspd, obj_ground_platform)) {
 				if(place_meeting(x, ceil(y), obj_ground_platform)) y = floor(y);
 				else y = ceil(y);
 		
