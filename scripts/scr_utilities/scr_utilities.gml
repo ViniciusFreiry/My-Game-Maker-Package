@@ -16,7 +16,7 @@ function change_sprite(_sprite) {
 }
 
 function animation_end() {
-	var _spd = sprite_get_speed(spr_player_powerup_start) / FPS * image_speed;
+	var _spd = sprite_get_speed(sprite_index) / FPS * image_speed;
 	
 	if(image_index + _spd >= image_number) return true;
 	
@@ -44,6 +44,53 @@ function change_state(_state, _sprites_list) {
 	state = _state;
 	sprites_list_index = 0;
 	sprites_list = _sprites_list;
+}
+#endregion
+
+#region Timer
+function initialize_timer_system(_qtd = 1) {
+	timers_cd_list = [];
+	timers_list = [];
+	
+	for(var _i = 0; _i < _qtd; _i++) {
+		array_push(timers_cd_list, 0);
+		array_push(timers_list, 0);
+	}
+}
+
+function set_timers_cd(_cd_list = [[FPS, FPS]], _index = -1) {
+	if(_index != -1) {
+		timers_cd_list[_index] = _cd_list[_index];
+		timers_list[_index] = irandom_range(timers_cd_list[_index][0], timers_cd_list[_index][1]);
+		return;
+	}
+	
+	for(var _i = 0; _i < array_length(_cd_list); _i++) {
+		timers_cd_list[_i] = _cd_list[_i];
+		timers_list[_i] = irandom_range(timers_cd_list[_i][0], timers_cd_list[_i][1]);
+	}
+}
+
+function set_timer_value_index(_index = 0, _value = FPS) {
+	timers_list[_index] = _value;
+}
+
+function reset_timer_index(_index = 0) {
+	timers_list[_index] = irandom_range(timers_cd_list[_index][0], timers_cd_list[_index][1]);
+}
+
+function get_timer_index(_index = 0) {
+	if(timers_list[_index] > 0) {
+		timers_list[_index]--;
+		return false;
+	} else {
+		reset_timer_index(_index);
+		return true;
+	}
+}
+
+function reset_all_timers() {
+	for(var _i = 0; _i < array_length(timers_list); _i++) reset_timer_index(_i);
 }
 #endregion
 
