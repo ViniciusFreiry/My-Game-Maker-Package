@@ -1,21 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_player_top_down",
+  "%Name":"obj_entity_platform_ramp",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_player_top_down",
+  "name":"obj_entity_platform_ramp",
   "overriddenProperties":[],
   "parent":{
-    "name":"Normal Collision",
-    "path":"folders/Utilities/Systems/Top Down Collision/Objects/Normal Collision.yy",
+    "name":"Ramp Collision",
+    "path":"folders/Utilities/Systems/Platform Collision/Objects/Ramp Collision.yy",
   },
-  "parentObjectId":{
-    "name":"obj_entity_top_down",
-    "path":"objects/obj_entity_top_down/obj_entity_top_down.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -33,10 +31,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_player_top_down",
-    "path":"sprites/spr_player_top_down/spr_player_top_down.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

@@ -28,16 +28,50 @@ move = function() {
 		var _hspd = sign(hspd);
 		
 		if(place_meeting(x + _hspd, y, obj_ground_platform)) {
+			if(!place_meeting(x + _hspd, y - 1, obj_ground_platform)) {
+				x += _hspd;
+				y--;
+				y_buffer--;
+				continue;
+			} else if(!place_meeting(x + _hspd, y + 1, obj_ground_platform)) {
+				x += _hspd;
+				y++;
+				y_buffer++;
+				continue;
+			}
+		}
+		
+		if(place_meeting(x + _hspd, y, obj_ground_platform)) {
 			hspd = 0;
 			x_buffer = x;
 			break;
 		} else {
+			if(!place_meeting(x + _hspd, y + 1, obj_ground_platform) and 
+			place_meeting(x + _hspd, y + 2, obj_ground_platform)) {
+				y++;
+				continue;
+			}
+			
 			x += _hspd;
 		}
 	}
 	
 	repeat(abs(round(y_buffer) - y)) {
 		var _vspd = sign(vspd);
+		
+		if(_vspd < 0 and place_meeting(x, y + _vspd, obj_ground_platform)) {
+			if(!place_meeting(x - 1, y + _vspd, obj_ground_platform)) {
+				x--;
+				y += _vspd;
+				x_buffer--;
+				continue;
+			} else if(!place_meeting(x + 1, y + _vspd, obj_ground_platform)) {
+				x++;
+				y += _vspd;
+				x_buffer++;
+				continue;
+			}
+		}
 		
 		if(place_meeting(x, y + _vspd, obj_ground_platform)) {
 			vspd = 0;

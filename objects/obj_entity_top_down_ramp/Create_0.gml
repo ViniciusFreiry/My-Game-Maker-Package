@@ -25,6 +25,20 @@ move = function() {
 		var _hspd = sign(hspd);
 		
 		if(place_meeting(x + _hspd, y, obj_ground_top_down)) {
+			if(!place_meeting(x + _hspd, y - 1, obj_ground_top_down)) {
+				x += _hspd;
+				y--;
+				y_buffer--;
+				continue;
+			} else if(!place_meeting(x + _hspd, y + 1, obj_ground_top_down)) {
+				x += _hspd;
+				y++;
+				y_buffer++;
+				continue;
+			}
+		}
+		
+		if(place_meeting(x + _hspd, y, obj_ground_top_down)) {
 			hspd = 0;
 			x_buffer = x;
 			break;
@@ -35,6 +49,20 @@ move = function() {
 	
 	repeat(abs(round(y_buffer) - y)) {
 		var _vspd = sign(vspd);
+		
+		if(place_meeting(x, y + _vspd, obj_ground_top_down)) {
+			if(!place_meeting(x - 1, y + _vspd, obj_ground_top_down)) {
+				x--;
+				y += _vspd;
+				x_buffer--;
+				continue;
+			} else if(!place_meeting(x + 1, y + _vspd, obj_ground_top_down)) {
+				x++;
+				y += _vspd;
+				x_buffer++;
+				continue;
+			}
+		}
 		
 		if(place_meeting(x, y + _vspd, obj_ground_top_down)) {
 			vspd = 0;

@@ -1,20 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_player_top_down",
+  "%Name":"obj_player_top_down_ramp",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_player_top_down",
+  "name":"obj_player_top_down_ramp",
   "overriddenProperties":[],
   "parent":{
-    "name":"Normal Collision",
-    "path":"folders/Utilities/Systems/Top Down Collision/Objects/Normal Collision.yy",
+    "name":"Ramp Collision",
+    "path":"folders/Utilities/Systems/Top Down Collision/Objects/Ramp Collision.yy",
   },
   "parentObjectId":{
-    "name":"obj_entity_top_down",
-    "path":"objects/obj_entity_top_down/obj_entity_top_down.yy",
+    "name":"obj_entity_top_down_ramp",
+    "path":"objects/obj_entity_top_down_ramp/obj_entity_top_down_ramp.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
