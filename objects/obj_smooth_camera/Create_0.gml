@@ -1,3 +1,6 @@
+x_buffer = x;
+y_buffer = y;
+
 target = noone;
 cam_zoom = false;
 view_scale = 1;
@@ -26,8 +29,11 @@ stoped_state = function() {
 
 chase_target_state = function() {
 	if(instance_exists(target)) {
-		x = lerp(x, target.x, 0.1);
-		y = lerp(y, target.y, 0.1);
+		x_buffer = lerp(x, target.x, 0.1);
+		y_buffer = lerp(y, target.y, 0.1);
+		
+		x = round(x_buffer);
+		y = round(y_buffer);
 		
 		var _view_w = camera_get_view_width(view_camera[0]),
 		_view_h = camera_get_view_height(view_camera[0]);
