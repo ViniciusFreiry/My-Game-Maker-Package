@@ -48,7 +48,7 @@ move = function() {
 			if(!place_meeting(x + _hspd, y + 1, obj_ground_platform) and 
 			place_meeting(x + _hspd, y + 2, obj_ground_platform)) {
 				y++;
-				continue;
+				y_buffer++;
 			}
 			
 			x += _hspd;
