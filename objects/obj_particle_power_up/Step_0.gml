@@ -1,4 +1,4 @@
-if(variable_global_exists("hitstop") and global.hitstop) exit;
+if((variable_global_exists("hitstop") and global.hitstop) or (variable_global_exists("pause") and global.pause)) exit;
 
 actual_life--;
 

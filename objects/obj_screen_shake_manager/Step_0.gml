@@ -1,3 +1,5 @@
+if(variable_global_exists("pause") and global.pause) exit;
+
 if (shake > 0.1) {
 	var _x = random_range(-shake, shake),
 	_y = random_range(-shake, shake);

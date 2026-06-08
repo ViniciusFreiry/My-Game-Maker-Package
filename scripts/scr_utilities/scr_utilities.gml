@@ -4,6 +4,7 @@
 #macro Debug_Mode:DEBUG_MODE true
 
 global.debug = false;
+global.pause = false;
 
 function change_sprite(_sprite) {
 	if(sprite_index != _sprite) {
