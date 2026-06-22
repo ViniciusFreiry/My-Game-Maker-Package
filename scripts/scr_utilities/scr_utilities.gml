@@ -50,9 +50,9 @@ function change_state(_state, _sprites_list) {
 
 #region Timer
 function initialize_timer_system(_qtd = 1) {
-	timers_cd_list = [];
-	timers_list = [];
-	
+	timers_cd_list = array_create(_qtd, [0, 0]);
+	timers_list = array_create(_qtd, 0);
+
 	for(var _i = 0; _i < _qtd; _i++) {
 		array_push(timers_cd_list, 0);
 		array_push(timers_list, 0);
@@ -61,7 +61,7 @@ function initialize_timer_system(_qtd = 1) {
 
 function set_timers_cd(_cd_list = [[FPS, FPS]], _index = -1) {
 	if(_index != -1) {
-		timers_cd_list[_index] = _cd_list[_index];
+		timers_cd_list[_index] = _cd_list;
 		timers_list[_index] = irandom_range(timers_cd_list[_index][0], timers_cd_list[_index][1]);
 		return;
 	}
@@ -125,13 +125,13 @@ function save_game(_variables_to_save = [], _save_number = global.actual_save_sl
 function load_saved_game(_save_number = global.actual_save_slot) {
 	var _buffer = buffer_load(string("save_{0}.json", _save_number));
 	
-	if(_buffer == -1) return;
+	if(_buffer == -1) return false;
 	
 	var _struct = json_parse(buffer_read(_buffer, buffer_string));
 	
 	if(_struct.deleted_file) {
 		delete _struct;
-		return;
+		return false;
 	}
 	
 	var _variables = struct_get_names(_struct);
@@ -142,6 +142,7 @@ function load_saved_game(_save_number = global.actual_save_slot) {
 	
 	buffer_delete(_buffer);
 	delete _struct;
+	return true;
 }
 
 function delete_saved_game(_save_number = global.actual_save_slot) {
