@@ -24,6 +24,18 @@ function animation_end() {
 	return false;
 }
 
+function get_closest_array_index(_array, _index, _value) {
+	for (var _distance = 1; _distance < array_length(_array); _distance++) {
+		var _left = _index - _distance,
+		_right = _index + _distance;
+		
+		if (_left >= 0 and _array[_left] == _value) return _left;
+		if (_right < array_length(_array) and _array[_right] == _value) return _right;
+	}
+	
+	return noone;
+}
+
 function generate_sin_wave(_frequency = 5, _current_time = current_time) {
 	return sin(_frequency * _current_time / 1000);
 }
