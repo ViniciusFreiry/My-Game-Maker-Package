@@ -1,0 +1,11 @@
+surface_set_target(shadow_surface);
+
+gpu_set_blendmode_ext(bm_dest_colour, bm_zero);
+
+draw_surface(application_surface, 0, 0);
+
+gpu_set_blendmode(bm_normal);
+
+surface_reset_target();
+
+draw_surface_stretched(shadow_surface, 0, 0, window_get_width(), window_get_height());
